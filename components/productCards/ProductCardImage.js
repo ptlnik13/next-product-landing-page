@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function ProductCardImage({imageUrl, title}) {
+export default function ProductCardImage({imageUrl, title, priority = false}) {
     return (
         <div className="relative aspect-[1/1] sm:aspect-[4/3] w-full bg-gray-100 min-h-72">
             {imageUrl ? (
@@ -8,6 +8,7 @@ export default function ProductCardImage({imageUrl, title}) {
                     src={imageUrl}
                     alt={title}
                     fill
+                    priority={priority}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover"
                 />
