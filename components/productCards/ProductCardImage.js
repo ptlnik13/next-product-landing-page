@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-export default function ProductCardImage({ imageUrl, title }) {
+export default function ProductCardImage({imageUrl, title}) {
     return (
-        <div className="relative aspect-[4/3] w-full bg-gray-100">
+        <div className="relative aspect-[1/1] sm:aspect-[4/3] w-full bg-gray-100 min-h-72">
             {imageUrl ? (
                 <Image
                     src={imageUrl}
