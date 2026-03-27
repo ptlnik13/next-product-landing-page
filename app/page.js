@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import {getDisplayMappings, getCatalogItems} from "../utils/catalog";
 import Header from "../components/Header";
+import ProductLandingPage from "../components/ProductLandingPage";
 
 export default async function Home() {
     const cookieStore = await cookies();
@@ -8,7 +9,8 @@ export default async function Home() {
 
   return (
     <div>
-     <Header userType={userType}/>
+     <ProductLandingPage userType={userType}/>
+
     </div>
   );
 }
