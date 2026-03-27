@@ -54,34 +54,38 @@ export default function ProductLandingPage({initialProducts, mappings, userType}
     }
 
     return (
-        <div>
-            <Header userType={userType}/>
-            <ViewSwitcher mappings={mappings} activeKey={mappingKey} onChange={handleMappingChange}/>
-            <Filters
-                search={search}
-                setSearch={setSearch}
-                category={category}
-                setCategory={setCategory}
-                categories={categories}
-            />
-            {
-                filteredItems.length === 0 ? (
-                        <div className="mt-10 rounded-2xl bg-white p-8 text-center text-gray-600 shadow-sm">
-                            No products found.
-                        </div>
-                    ) :
-                    (
-                        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                            {filteredItems.map((product) => (
-                                <ProductCard
-                                    key={product.id}
-                                    product={product}
-                                    mapping={activeMapping}
-                                />
-                            ))}
-                        </div>
-                    )
-            }
-        </div>
+        <main className="min-h-screen bg-gray-50">
+            <div className="mx-auto max-w-7xl px-4 py-6 md:px-6">
+                <Header userType={userType}/>
+                <div className="mt-6 space-y-4">
+                    <ViewSwitcher mappings={mappings} activeKey={mappingKey} onChange={handleMappingChange}/>
+                    <Filters
+                        search={search}
+                        setSearch={setSearch}
+                        category={category}
+                        setCategory={setCategory}
+                        categories={categories}
+                    />
+                </div>
+                {
+                    filteredItems.length === 0 ? (
+                            <div className="mt-10 rounded-2xl bg-white p-8 text-center text-gray-600 shadow-sm">
+                                No products found.
+                            </div>
+                        ) :
+                        (
+                            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                {filteredItems.map((product) => (
+                                    <ProductCard
+                                        key={product.id}
+                                        product={product}
+                                        mapping={activeMapping}
+                                    />
+                                ))}
+                            </div>
+                        )
+                }
+            </div>
+        </main>
     )
 }
