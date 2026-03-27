@@ -1,19 +1,14 @@
+import { cookies } from "next/headers";
 import {getDisplayMappings, getCatalogItems} from "../utils/catalog";
+import Header from "../components/Header";
 
 export default async function Home() {
-
-  const items = await getCatalogItems();
-  const mappings = await getDisplayMappings();
+    const cookieStore = await cookies();
+    const userType = cookieStore.get("audience")?.value || "guest";
 
   return (
     <div>
-      <h1>Contentful Test</h1>
-
-      <h2>Catalog Items</h2>
-      <pre>{JSON.stringify(items, null, 2)}</pre>
-
-      <h2>Display Mappings</h2>
-      <pre>{JSON.stringify(mappings, null, 2)}</pre>
+     <Header userType={userType}/>
     </div>
   );
 }
