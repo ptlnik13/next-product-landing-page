@@ -19,10 +19,16 @@ export default async function Home() {
     const visibleItems = userType === 'member' ? allItems : allItems.filter(item => item.cardSet === 'A');
 
     // Price logic.
-    const itemsWithAudiencePrice = visibleItems.map(item => ({
-        ...item,
-        price: userType === 'member' ? item.priceLoggedIn : item.priceLoggedOut,
-    }))
+    const itemsWithAudiencePrice = visibleItems.map((item) => ({
+        id: item.id,
+        title: item.title,
+        slug: item.slug,
+        imageUrl: item.imageUrl,
+        category: item.category,
+        cardSet: item.cardSet,
+        attributes: item.attributes,
+        price: userType === "member" ? item.priceLoggedIn : item.priceLoggedOut,
+    }));
 
 
     return (
