@@ -3,7 +3,7 @@ import ProductCardHeader from "./ProductCardHeader";
 import ProductCardBadges from "./ProductCardBadges";
 import ProductCardAttributes from "./ProductCardAttributes";
 
-export default function ProductCard({product, mapping}) {
+export default function ProductCard({product, mapping, imagePriority=false}) {
     const attributes = product.attributes;
     const highlightAttributes = mapping.highlightAttributes;
 
@@ -16,7 +16,7 @@ export default function ProductCard({product, mapping}) {
 
     return (
         <div className="overflow-hidden rounded-2xl bg-white shadow-sm transition hover:shadow-md hover:scale-[1.02]">
-            <ProductCardImage imageUrl={product.imageUrl} title={product.title}/>
+            <ProductCardImage imageUrl={product.imageUrl} title={product.title} priority={imagePriority}/>
 
             <div className="space-y-3 p-4">
                 <ProductCardHeader category={product.category} title={product.title} cardSet={product.cardSet}/>
