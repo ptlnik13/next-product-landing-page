@@ -1,16 +1,37 @@
-import { cookies } from "next/headers";
+import {cookies} from "next/headers";
+
 import {getDisplayMappings, getCatalogItems} from "../utils/catalog";
-import Header from "../components/Header";
+
 import ProductLandingPage from "../components/ProductLandingPage";
+import NoCatalogData from "../components/NoCatalogData";
 
 export default async function Home() {
     const cookieStore = await cookies();
     const userType = cookieStore.get("audience")?.value || "guest";
 
-  return (
-    <div>
-     <ProductLandingPage userType={userType}/>
+    const allItems = await getCatalogItems();
+    const displayMappings = await getDisplayMappings();
 
-    </div>
-  );
+    if (!allItems.length || !displayMappings.length) return <NoCatalogData/>;
+
+
+    // visible Card logic.
+    const visibleItems = userType === 'member' ? allItems : allItems.filter(item => item.cardSet === 'A');
+
+    // Price logic.
+    const itemsWithAudiencePrice = visibleItems.map(item => ({
+        ...item,
+        price: userType === 'member' ? item.priceLoggedIn : item.priceLoggedOut,
+    }))
+
+
+    return (
+        <div>
+            <ProductLandingPage
+                initialProducts = {itemsWithAudiencePrice}
+                userType={userType}
+                mappings={displayMappings}
+            />
+        </div>
+    );
 }

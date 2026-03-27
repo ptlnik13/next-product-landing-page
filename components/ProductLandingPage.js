@@ -1,16 +1,19 @@
 "use client";
 
-import {useState} from "react";
+import {useMemo, useState} from "react";
 
 import Header from "./Header";
 import Filters from "./Filters";
 
-export default function ProductLandingPage({ userType}) {
+export default function ProductLandingPage({ initialProducts, mappings, userType}) {
 
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("all");
 
-    const categories = ["all", "shoes", "jewelry", "watches", "accessories"];
+    const categories = useMemo(() =>{
+        //somehow I am getting 2 Tools, so I am going to use SET method.
+        return ["all", ...new Set(initialProducts.map(product => product.category))]
+    } , [initialProducts]);
 
     return (
         <div>
