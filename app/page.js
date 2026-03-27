@@ -6,7 +6,6 @@ import ProductLandingPage from "../components/ProductLandingPage";
 import NoCatalogData from "../components/NoCatalogData";
 
 export default async function Home() {
-    // await new Promise(resolve => setTimeout(resolve, 3000)); // checking the Loading effect.
     const cookieStore = await cookies();
     const userType = cookieStore.get("audience")?.value || "guest";
 
@@ -29,7 +28,7 @@ export default async function Home() {
     return (
         <div>
             <ProductLandingPage
-                initialProducts = {itemsWithAudiencePrice}
+                initialProducts={itemsWithAudiencePrice}
                 userType={userType}
                 mappings={displayMappings}
             />
