@@ -1,6 +1,6 @@
 "use client";
 
-import {useMemo, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 
 import Header from "./Header";
 import Filters from "./Filters";
@@ -11,6 +11,13 @@ export default function ProductLandingPage({initialProducts, mappings, userType}
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("all");
     const [mappingKey, setMappingKey] = useState("price_first"); // for presentation change.
+
+   useEffect(() => {
+        const savedMapping = localStorage.getItem("catalog_mapping");
+        if (savedMapping) {
+            setMappingKey(savedMapping);
+        }
+    }, []);
 
     const categories = useMemo(() => {
         //somehow I am getting 2 Tools, so I am going to use SET method.
