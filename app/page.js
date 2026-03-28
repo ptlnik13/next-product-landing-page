@@ -5,6 +5,23 @@ import {getDisplayMappings, getCatalogItems} from "../utils/catalog";
 import ProductLandingPage from "../components/ProductLandingPage";
 import NoCatalogData from "../components/NoCatalogData";
 
+
+export const metadata = {
+    title: "Catalog",
+    description:
+        "Explore products with category filters, text search, CMS-driven card layouts.",
+    alternates: {
+        canonical: "/",
+    },
+    openGraph: {
+        title: "Catalog",
+        description:
+            "Explore products with category filters, text search, CMS-driven card layouts.",
+        url: "/",
+        type: "website",
+    },
+};
+
 export default async function Home() {
     const cookieStore = await cookies();
     const userType = cookieStore.get("audience")?.value || "guest";

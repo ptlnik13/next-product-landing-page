@@ -2,7 +2,7 @@
 
 import {useRouter} from 'next/navigation';
 
-import {switchAudience} from "@/utils/checkAudience";
+import {switchAudience} from "../utils/checkAudience";
 
 export default function Header({userType}) {
     const router = useRouter();
