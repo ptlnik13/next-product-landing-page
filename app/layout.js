@@ -12,10 +12,7 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-const siteUrl = process.env.VERCEL_URL || "http://localhost:3000";
-
 export const metadata = {
-    metadataBase: new URL(siteUrl),
     title: {
         default: "Product Catalog",
         template: "Product Catalog",
