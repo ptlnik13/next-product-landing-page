@@ -5,8 +5,8 @@ A small product catalog built with Next.js and Contentful. It supports audience-
 
 ## Live Demo
 
-- **Deployed App:** 
-- **Repository:** 
+- **Deployed App:** https://next-product-landing-page.vercel.app/
+- **Repository:** https://github.com/ptlnik13/next-product-landing-page
 
 ---
 
